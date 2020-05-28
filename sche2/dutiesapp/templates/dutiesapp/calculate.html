@@ -1,0 +1,294 @@
+{% load static %}
+<html>
+<head>
+    <title>Insert</title>
+
+    <!-- <style>
+         body{
+        margin: 0;
+        padding: 0;
+
+    }
+
+
+
+
+    .topbar{
+        z-index: 1;
+        position: fixed;
+        left: 0%;
+        top: 0%;
+        height: 11%;
+        width: 100%;
+        color:white;
+        text-decoration-color: white;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 20px;
+        border: solid;
+        background-color: #201e3e;
+        box-shadow: 0px 3px 10px rgba(32,30,62,1);
+        text-align: center;
+
+    }
+
+    input[type=text]{
+        border: 3px solid;
+        border-radius: 5px;
+        width: 65%;
+        height: 35px;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 20px;
+        border-color: #dbdbdb;
+
+    }
+
+    input[type=number]{
+        border: 3px solid;
+        border-radius: 5px;
+        width: 65%;
+        height: 35px;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 20px;
+        border-color: #dbdbdb;
+
+    }
+    input[type=date]{
+      border: 3px solid;
+      border-radius: 5px;
+      width: 20%;
+      height: 28px;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 10px;
+      border-color: #dbdbdb;
+    }
+
+    option{
+      border: 3px solid;
+      border-radius: 5px;
+      width: 20%;
+      height: 28px;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 10px;
+      border-color: #dbdbdb;
+    }
+
+    input{
+
+    }
+
+    input[type=submit]{
+        background-color: #2e77c1;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        width: 30%;
+        height: 50px;
+        font-size: 20px;
+        text-align: center;
+        align-items: center;
+        box-shadow: 0px 3px 6px 2px #000000;
+
+
+        /*box-shadow: 0px 1px 10px black;*/
+    }
+
+
+    input[type=submit]:hover{
+        cursor: pointer;
+        background-color: #2163a7;
+        border-radius: 0%;
+        box-shadow:-1px 13px 38px -3px #000000;
+    }
+
+    button{
+        background-color: #2e77c1;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        width: 10%;
+        height: 25px;
+        font-size: 15px;
+        box-shadow: 0px 3px 6px 2px #000000;
+    }
+
+    button:hover{
+        background-color: #235586;
+        border-radius:0%;
+        box-shadow:-1px 13px 38px -3px #000000;
+
+    }
+
+    hr {
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 1px;
+        height: 7px;
+        background-color:#074ab7;
+        border-radius:20px;
+
+}
+
+
+    .form{
+
+        padding-top: 50px;
+        padding-left: 30px;
+        padding-right: 30px;
+        box-sizing: border-box;
+        z-index: 0;
+        position: absolute;
+        left: 25%;
+        top: 20%;
+        height: auto;
+        width: 50%;
+        border: solid;
+        border-color: white;
+        box-shadow: 0px 5px 10px black;
+        border-radius: 15px;
+        background-color: #f2f2f2;
+        border: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.1em;
+        text-align: center;
+
+    }
+
+    a {
+ color: #213999;
+ font-weight: 500;
+ -webkit-transition: color 0.2s;
+ transition: color 0.2s;
+ transition: transform 0.2s;
+ display: inline-block;
+ text-decoration: none;
+ position: relative;
+ padding: 0 0.25em;
+ }
+ a:hover {
+ color: #d04c3f;
+ }
+ a::before,
+ a::after {
+ position: absolute;
+ top: 0;
+ font-weight: 100;
+ font-size: 150%;
+ line-height: 1;
+ opacity: 0;
+ -webkit-transition: opacity 0.2s, -webkit-transform 0.2s;
+ transition: opacity 0.2s, transform 0.2s;
+ }
+ a::before {
+ left: -0.1em;
+ content: '[';
+ -webkit-transform: translateX(-100%);
+ transform: translateX(-100%);
+ }
+ a::after {
+ right: -0.1em;
+ content: ']';
+ -webkit-transform: translateX(100%);
+ transform: translateX(100%);
+ }
+ a:hover::before,
+ a:hover::after {
+ opacity: 1;
+ -webkit-transform: translateX(0);
+ transform: translateX(0);
+ }
+ .result{
+     width: auto;
+     height: auto;
+     background-color: rgba(67, 142, 212, 0.555);
+     text-align: center;
+     font-size: 15  px;
+     border-radius: 20px;
+ }
+
+    </style> -->
+    <link rel="stylesheet" href="{% static 'css/input.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+
+    <script>
+
+        $(document).ready(function(){
+            $('.topbar').hide();
+            $('.logo').hide();
+            $('.form').hide();
+            $('span').hide();
+
+           setTimeout(function(){
+               $('.topbar').slideDown(800);
+               $('.logo').slideDown(800);
+
+           },500);
+            setTimeout(function(){
+                $('.form').fadeIn(500);
+
+
+            },700);
+            setTimeout(function(){
+              $('span').fadeIn(1000);
+            },1000);
+        });
+    </script>
+</head>
+
+
+
+
+
+<body>
+        <div class="topbar"><img  class="logo" src='{% static "images/collegelogo.png" %}' width="205px" height="70px" ><span>Enter the Examination Details</span></div>
+
+
+<div class="form">
+  <form action="cal/" method="POST">
+      {% csrf_token %}
+    Number of days:<br><br>
+    <input type="number" name="ndays" id="ndays"><br><br>
+    Number of sessions:<br><br>
+    <input type="number" name="nsessions" id="nsession"><br><br>
+    <button id="nxtbutton" onclick="display()">Enter Details</button><br><br>
+
+
+
+		 <div class="extended" id="extended"></div>
+        <input type="submit" value="Calculate"><br><br><br>
+
+
+
+
+
+    </form>
+    </div>
+
+
+     <script>
+         document.getElementById("nxtbutton").addEventListener("click", function(event){
+  event.preventDefault()
+});
+         function display(){
+             var nsessions=document.getElementById('nsession').value;
+             var ndays=document.getElementById('ndays').value;
+             for(var i=1;i<=nsessions;i++){
+                 var htmlcode="No of students for Session "+i+" :<br><input type='number' name='s"+i+"'><br><br>No of ROOMS for Session "+i+" :<br><input type='number' name='r"+i+"'><br><br>Date :&nbsp;&nbsp;<input type='date' name='d"+i+"'><br>&nbsp;<br>AM/PM:&nbsp;&nbsp;<select name='ap"+i+"'><option value='am'>AM</option><option value='pm'>PM</option></select><br><br><hr><br><br>";
+                 document.getElementById('extended').innerHTML+=htmlcode;
+
+
+             }
+
+
+         }
+
+
+
+
+    </script>
+</body>
+</html>

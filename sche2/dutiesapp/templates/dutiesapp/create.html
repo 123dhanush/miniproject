@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert New Teacher</title>
+    <link rel="stylesheet" href="{% static 'css/input.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+
+    <script>
+
+        $(document).ready(function(){
+            $('.topbar').hide();
+            $('.logo').hide();
+            $('.form').hide();
+
+           setTimeout(function(){
+               $('.topbar').slideDown(800);
+               $('.logo').slideDown(800);
+           },500);
+            setTimeout(function(){
+                $('.form').fadeIn(500);
+
+            },700);
+        });
+    </script>
+
+</head>
+<body>
+  <div class="topbar"><img  class="logo" src='{% static "images/collegelogo.png" %}' width="205px" height="70px" ><span>Insert New Teacher</span></div>
+<form action="add/" method="post">
+  <div class="form">
+    {% csrf_token %}
+<h3>Enter the details of the teacher</h3><br><br>
+<label for="initials">Teacher's name :</label><br><br> <input type="text" tabindex="1" id="initials" name="initials"><br><br>
+<label for="department">Department :</label><br><br>
+<select  name="department">
+  <option value="SELECT">Select</option>
+  <option value="CSE">CSE</option>
+    <option value="CV">CV</option>
+      <option value="EEE">EEE</option>
+        <option value="ECE">ECE</option>
+          <option value="IEM">IEM</option>
+            <option value="CE">CE</option>
+            <option value="MECH">MECH</option>
+            <option value="EIE">EIE</option>
+            <option value="ARCH">ARCH</option>
+              <option value="ISE">ISE</option>
+              <option value="TCE">TCE</option>
+                <option value="ML">ML</option>
+                <option value="BT">BT</option>
+                <option value="PHY">PHY</option>
+                <option value="CHEM">CHEM</option>
+                <option value="MATHS">MATHS</option>
+                <option value="HUM">HUMANITIES</option>
+                <option value="MBA">MBA</option>
+                <option value="MCA">MCA</option>
+
+</select><br><br>
+<label for="designation">Designation:</label><br><br>
+<select name="designation">
+  <option value="SELECT">Select</option>
+  <option value="H.O.D">H.O.D</option>
+  <option value="Professor">PROFESSOR</option>
+  <option value="Professor(prob)">Professor(prob)</option>
+  <option value="Associate">Associate</option>
+  <option value="Associate(prob)">Associate(prob)</option>
+  <option value="Assistant">Assistant</option>
+  <option value="Probitionary">Probitionary</option>
+  <option value="Squad">Squad</option>
+</select>
+<br><br><br>
+<!--<b>Number of duties :</b><input type="number" name="n_duties"><br>
+<b>No of AM sessions :</b><input type="number" name="n_am"><br>
+<b>No of PM sessions :</b><input type="number" name="n_pm"><br>-->
+<!--
+<b>Relief :</b><input type="number" name="n_relief"><br>
+-->
+
+
+<input type="submit" name="submit" value="SUBMIT"><br><br>
+</div>
+</form>
+</body>
+</html>

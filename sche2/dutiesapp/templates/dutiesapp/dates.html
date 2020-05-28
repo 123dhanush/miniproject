@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dates page</title>
+    <link rel="stylesheet" href='{% static "css/input.css" %}'>
+    <link rel="stylesheet" href='{% static "css/dates.css" %}'>
+</head>
+<body>
+
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400" rel="stylesheet">
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+
+        <script>
+
+            $(document).ready(function(){
+
+                $('.topbar').hide();
+                $('.logo').hide();
+                // $('.form').hide();
+                $('#main_div').hide();
+                $('#form1').hide();
+                $("#form2").hide();
+
+               setTimeout(function(){
+                   $('.topbar').slideDown(800);
+                   $('.logo').slideDown(800);
+               },500);
+                setTimeout(function(){
+                    $('#main_div').fadeIn(500);
+
+                },700);
+            });
+        </script>
+
+
+
+
+        <div class="topbar"><img  class="logo" src='{% static "images/collegelogo.png" %}'width="205px" height="70px" ><span>Provide Leave Dates</span></div>
+
+        
+
+        <div class="form" id="main_div">
+          <h1>CHOOSE ONE</h1><br><br>
+          <button id="add_leaves" onclick="add_leaves()">ADD LEAVES</button><br><br>
+          <button id="add_c_leaves" onclick="add_c_leaves()">ADD CONFIDENTIAL LEAVES</button><br><br>
+
+        </div>
+
+
+
+
+        <form action="dates_confidential/" method="post">
+          {% csrf_token %}
+          <div class="form" id="form2">
+
+            <b> <label for="initials">Teacher's name :</label></b><br><br> <input type="text" id="initials1" name="initials1"><br><br>
+
+
+            <b> <label for="department">Department :</label></b><br><br> <input type="text" id="department1" name="department1"><br><br>
+            <!-- <b> <label for="selectdatetype">Select type of Dates :</label></b><br> -->
+                <!-- <select name="datetype" id="datetype" onchange="date_type_display()">
+                  <option value="select1" selected>Select</option>
+                  <option value="date">Add Dates</option>
+                  <option value="range">Range of Dates</option>
+
+                </select><br><br><br> -->
+
+           <!-- <div id="divndates"> <b> <label for="ndates" id="labelndates">Number of days :</label></label></b><br><br> <input type="number" id="ndates" name="ndates"><br><br></div>
+<br><br> -->
+             <!-- <button id='button' class="enterdates" onclick="disp()">Enter Dates</button><br><br> -->
+
+
+
+             <div id='datediv1'>  </div><br><br>
+             <div id='rangediv1'>  </div><br><br>
+
+
+             <!-- <div id="ranges" name="ranges">
+               <b> <label for="from">From :</label></b><br><input type="date" name="from" id="from"><br><br>
+               <b> <label for="to">To :</label></b><br><input type="date" name="to" id="to"><br><br>
+             </div> -->
+
+             <input name="total_dates1" id="total_dates1" type="number">
+             <input name="total_ranges1" id="total_ranges1" type="number">
+             <input name="total1" id="total1" type="number">
+             <!-- <button id="buttget" onclick="print1()">Get</button> -->
+             <br>
+
+             <div id="endbuttons">
+               <button class='b1class' id='b11' onclick='ba1()'>Date</button>
+               <button class='b2class' id='b22' onclick='bb1()'>Range</button><br><br>
+               <input type='submit' id='finaladd' name='dates' value='Add'><br><br>
+             </div>
+
+
+          </div>
+        </form>
+        
+        
+        
+        
+        
+        
+        
+        
+        <form action="dates/" method="post">
+            {% csrf_token %}
+            <div class="form" id="form1">
+
+
+
+               <b> <label for="initials">Teacher's name :</label></b><br><br> <input type="text" id="initials" name="initials"><br><br>
+
+
+               <b> <label for="department">Department :</label></b><br><br> <input type="text" id="department" name="department"><br><br>
+               <!-- <b> <label for="selectdatetype">Select type of Dates :</label></b><br> -->
+                   <!-- <select name="datetype" id="datetype" onchange="date_type_display()">
+                     <option value="select1" selected>Select</option>
+                     <option value="date">Add Dates</option>
+                     <option value="range">Range of Dates</option>
+
+                   </select><br><br><br> -->
+
+              <!-- <div id="divndates"> <b> <label for="ndates" id="labelndates">Number of days :</label></label></b><br><br> <input type="number" id="ndates" name="ndates"><br><br></div>
+<br><br> -->
+                <!-- <button id='button' class="enterdates" onclick="disp()">Enter Dates</button><br><br> -->
+
+
+
+                <div id='datediv'>  </div><br><br>
+                <div id='rangediv'>  </div><br><br>
+
+
+                <!-- <div id="ranges" name="ranges">
+                  <b> <label for="from">From :</label></b><br><input type="date" name="from" id="from"><br><br>
+                  <b> <label for="to">To :</label></b><br><input type="date" name="to" id="to"><br><br>
+                </div> -->
+
+                <input name="total_dates" id="total_dates" type="number">
+                <input name="total_ranges" id="total_ranges" type="number">
+                <input name="total" id="total" type="number">
+                <!-- <button id="buttget" onclick="print1()">Get</button> -->
+                <br>
+
+                <div id="endbuttons">
+                  <button class='b1class' id='b1' onclick='ba()'>Date</button>
+                  <button class='b2class' id='b2' onclick='bb()'>Range</button><br><br>
+                  <input type='submit' id='finaladd' name='dates' value='Add'><br><br>
+                </div>
+
+
+            </div>
+
+        </form>
+
+        <script type="text/javascript">
+
+            document.getElementById("b1").addEventListener("click", function(event){
+           event.preventDefault()
+           });
+           document.getElementById("b2").addEventListener("click", function(event){
+          event.preventDefault()
+          });
+
+          document.getElementById("b11").addEventListener("click", function(event){
+           event.preventDefault()
+           });
+           document.getElementById("b22").addEventListener("click", function(event){
+          event.preventDefault()
+          });
+
+          document.getElementById("add_leaves").addEventListener("click", function(event){
+           event.preventDefault()
+           });
+           document.getElementById("add_c_leaves").addEventListener("click", function(event){
+           event.preventDefault()
+           });
+
+
+           function add_leaves()
+           {
+             document.getElementById("main_div").style.display="none";
+             document.getElementById("form1").style.display="block";
+
+           }
+
+           function add_c_leaves()
+           {
+             document.getElementById("main_div").style.display="none";
+             document.getElementById("form2").style.display="block";
+
+           }
+          //  document.getElementById("form1").style.display="none";
+          //  document.getElementById("form2").style.display="none";
+          //  console.log("Hello ji");
+
+
+          function ba(){
+            var code='';
+            var code2='';
+              var l=document.getElementsByClassName("dateclass").length;
+              var t=document.getElementsByClassName("singledateclass").length;
+              var u=document.getElementsByClassName("rangeclass").length;
+
+              var br1=document.createElement("BR");
+              var x=document.createElement("B")
+              var text=document.createTextNode("Date "+(t+1)+"---");
+              x.appendChild(text)
+              document.getElementById('datediv').appendChild(x);
+              document.getElementById('datediv').appendChild(br1);
+              document.getElementById('datediv').appendChild(br1);
+
+
+              var y = document.createElement("INPUT");
+              y.setAttribute("type", "date");
+              y.setAttribute("class", "dateclass");
+              y.setAttribute("class", "singledateclass");
+              y.setAttribute("name", "date"+(t+1));
+              document.getElementById('datediv').appendChild(y);
+              document.getElementById('datediv').appendChild(br1);
+              document.getElementById('datediv').appendChild(br1);
+
+
+
+
+
+              // document.getElementById('b1').remove();
+              // document.getElementById('b2').remove();
+              // document.getElementById('finaladd').remove();
+            //    code+= "<br><div><b>Date "+(t+1)+" </b> <br><input type='date' name='date"+(t+1)+"' class='dateclass singledateclass'><br><br></div>";
+            //
+            //
+            // document.getElementById('datediv').innerHTML+=code;
+            // code2+="<button class='b1class' id='b1' onclick='ba()'>Date</button>&nbsp; &nbsp; &nbsp;<button class='b2class' id='b2' onclick='bb()'>Range</button><br><br><input type='submit' name='dates' id='finaladd' value='Add'>";
+            // document.getElementById('form').innerHTML+=code2;
+            document.getElementById("total_dates").value=t+1;
+            document.getElementById("total_ranges").value=u;
+            document.getElementById('total').value=t+u+1;
+
+          }
+
+
+
+          function ba1(){
+            var code='';
+            var code2='';
+              var l=document.getElementsByClassName("dateclass").length;
+              var t=document.getElementsByClassName("singledateclass").length;
+              var u=document.getElementsByClassName("rangeclass").length;
+
+              var br1=document.createElement("BR");
+              var x=document.createElement("B")
+              var text=document.createTextNode("Date "+(t+1)+"---");
+              x.appendChild(text)
+              document.getElementById('datediv1').appendChild(x);
+              var space=document.createTextNode("     ");
+              document.getElementById('datediv1').appendChild(space);
+
+              var selectList = document.createElement("select");
+              selectList.id = "mySelect";
+              selectList.setAttribute("name","ap"+(t+1));
+              var option1 = document.createElement("option");
+              option1.value = "am";
+              option1.text = "AM";
+              selectList.appendChild(option1);
+
+              var option2 = document.createElement("option");
+              option2.value = "pm";
+              option2.text = "PM";
+              selectList.appendChild(option2);
+
+              
+
+
+              document.getElementById('datediv1').appendChild(br1);
+              document.getElementById('datediv1').appendChild(br1);
+
+
+              var y = document.createElement("INPUT");
+              y.setAttribute("type", "date");
+              y.setAttribute("class", "dateclass");
+              y.setAttribute("class", "singledateclass");
+              y.setAttribute("name", "date"+(t+1));
+              document.getElementById('datediv1').appendChild(y);
+              document.getElementById('datediv1').appendChild(selectList);
+              document.getElementById('datediv1').appendChild(br1);
+              document.getElementById('datediv1').appendChild(br1);
+
+
+
+
+
+              // document.getElementById('b1').remove();
+              // document.getElementById('b2').remove();
+              // document.getElementById('finaladd').remove();
+            //    code+= "<br><div><b>Date "+(t+1)+" </b> <br><input type='date' name='date"+(t+1)+"' class='dateclass singledateclass'><br><br></div>";
+            //
+            //
+            // document.getElementById('datediv').innerHTML+=code;
+            // code2+="<button class='b1class' id='b1' onclick='ba()'>Date</button>&nbsp; &nbsp; &nbsp;<button class='b2class' id='b2' onclick='bb()'>Range</button><br><br><input type='submit' name='dates' id='finaladd' value='Add'>";
+            // document.getElementById('form').innerHTML+=code2;
+            document.getElementById("total_dates1").value=t+1;
+            document.getElementById("total_ranges1").value=u;
+            document.getElementById('total1').value=t+u+1;
+
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          function bb(){
+            var code='';
+            var code2='';
+            var l=document.getElementsByClassName("dateclass").length;
+            var t=document.getElementsByClassName("rangeclass").length;
+            var u=document.getElementsByClassName("singledateclass").length;
+
+
+            var br1=document.createElement("BR");
+            var x=document.createElement("B")
+            var text=document.createTextNode("Range "+(t+1)+"---");
+            x.appendChild(text)
+            document.getElementById('rangediv').appendChild(x);
+            document.getElementById('rangediv').appendChild(br1);
+            var fromt=document.createTextNode("From :");
+            document.getElementById('rangediv').appendChild(fromt);
+
+
+            var y = document.createElement("INPUT");
+y.setAttribute("type", "date");
+y.setAttribute("class", "dateclass");
+y.setAttribute("class", "rangeclass");
+y.setAttribute("id", "from");
+y.setAttribute("name", "range"+(t+1)+"1");
+document.getElementById('rangediv').appendChild(y);
+var space=document.createTextNode("            ");
+document.getElementById('rangediv').appendChild(space);
+var y2 = document.createElement("INPUT");
+y2.setAttribute("type", "date");
+y2.setAttribute("class", "dateclass");
+// y2.setAttribute("class", "rangeclass");
+y2.setAttribute("id", "to");
+y2.setAttribute("name", "range"+(t+1)+"2");
+var to=document.createTextNode("To :");
+document.getElementById('rangediv').appendChild(to);
+document.getElementById('rangediv').appendChild(y2);
+document.getElementById('rangediv').appendChild(br1);
+document.getElementById('rangediv').appendChild(br1);
+
+
+
+            // document.getElementById('b1').remove();
+            // document.getElementById('b2').remove();
+            // document.getElementById('finaladd').remove();
+            // code+="<div><b>Range "+(t+1)+" </b><br><label for='from'>From :</label><input type='date' name='range"+(t+1)+"1' id='from' class='rangeclass dateclass'>&nbsp; &nbsp; &nbsp; <label for='to'>To :</label><input type='date' name='range"+(t+1)+"2' id='to'><br></div>";
+            // document.getElementById('rangediv').innerHTML+=code;
+            // code2+="<button class='b1class' id='b1' onclick='ba()'>Date</button>&nbsp; &nbsp; &nbsp;<button class='b2class' id='b2' onclick='bb()'>Range</button><br><br><input type='submit' name='dates' id='finaladd' value='Add'>";
+            // document.getElementById('form').innerHTML+=code2;
+            document.getElementById("total_ranges").value=t+1;
+            document.getElementById('total_dates').value=u;
+            document.getElementById('total').value=t+u+1;
+          }
+
+
+
+
+          function bb1(){
+            var code='';
+            var code2='';
+            var l=document.getElementsByClassName("dateclass").length;
+            var t=document.getElementsByClassName("rangeclass").length;
+            var u=document.getElementsByClassName("singledateclass").length;
+
+
+            var br1=document.createElement("BR");
+            var x=document.createElement("B")
+            var text=document.createTextNode("Range "+(t+1)+"---");
+            x.appendChild(text)
+            document.getElementById('rangediv1').appendChild(x);
+            document.getElementById('rangediv1').appendChild(br1);
+            var fromt=document.createTextNode("From :");
+            document.getElementById('rangediv1').appendChild(fromt);
+
+
+            var y = document.createElement("INPUT");
+y.setAttribute("type", "date");
+y.setAttribute("class", "dateclass");
+y.setAttribute("class", "rangeclass");
+y.setAttribute("id", "from");
+y.setAttribute("name", "range"+(t+1)+"1");
+document.getElementById('rangediv1').appendChild(y);
+var space=document.createTextNode("            ");
+document.getElementById('rangediv1').appendChild(space);
+var y2 = document.createElement("INPUT");
+y2.setAttribute("type", "date");
+y2.setAttribute("class", "dateclass");
+// y2.setAttribute("class", "rangeclass");
+y2.setAttribute("id", "to");
+y2.setAttribute("name", "range"+(t+1)+"2");
+var to=document.createTextNode("To :");
+document.getElementById('rangediv1').appendChild(to);
+document.getElementById('rangediv1').appendChild(y2);
+
+
+
+var selectList = document.createElement("select");
+              selectList.id = "mySelect2";
+              selectList.setAttribute("name","rap"+(t+1));
+              var option1 = document.createElement("option");
+              option1.value = "am";
+              option1.text = "AM";
+              selectList.appendChild(option1);
+
+              var option2 = document.createElement("option");
+              option2.value = "pm";
+              option2.text = "PM";
+              selectList.appendChild(option2);
+              document.getElementById('rangediv1').appendChild(space);
+
+              document.getElementById('rangediv1').appendChild(selectList);
+
+document.getElementById('rangediv1').appendChild(br1);
+document.getElementById('rangediv1').appendChild(br1);
+
+
+
+            // document.getElementById('b1').remove();
+            // document.getElementById('b2').remove();
+            // document.getElementById('finaladd').remove();
+            // code+="<div><b>Range "+(t+1)+" </b><br><label for='from'>From :</label><input type='date' name='range"+(t+1)+"1' id='from' class='rangeclass dateclass'>&nbsp; &nbsp; &nbsp; <label for='to'>To :</label><input type='date' name='range"+(t+1)+"2' id='to'><br></div>";
+            // document.getElementById('rangediv').innerHTML+=code;
+            // code2+="<button class='b1class' id='b1' onclick='ba()'>Date</button>&nbsp; &nbsp; &nbsp;<button class='b2class' id='b2' onclick='bb()'>Range</button><br><br><input type='submit' name='dates' id='finaladd' value='Add'>";
+            // document.getElementById('form').innerHTML+=code2;
+            document.getElementById("total_ranges1").value=t+1;
+            document.getElementById('total_dates1').value=u;
+            document.getElementById('total1').value=t+u+1;
+            console.log( document.getElementById("total_ranges1").value)
+          }
+
+
+
+
+
+
+
+
+
+
+            // function disp()
+            // {
+            //     var code='';
+            //     var n=document.getElementById('ndates').value;
+            //     for(var i=0;i<n;i++)
+            //     {
+            //        code+= "<b>Date "+(i+1)+" :</b> <input type='date' name='date"+(i+1)+"'><br><br>";
+            //
+            //     }
+            //     document.getElementById('div').innerHTML=code;
+            // }
+            //
+            // function date_type_display(){
+            //   var option=document.getElementById("datetype").value;
+            //   if(option=="date"){
+            //     document.getElementById("div").style.display="block";
+            //       document.getElementById("button").style.display="block";
+            //         document.getElementById("ranges").style.display="none";
+            //         document.getElementById("divndates").style.display="block";
+            //   }
+            //   // if(option=="select"){
+            //   //     document.getElementById("ranges").style.display="none";
+            //   //     document.getElementById("button").style.display="none";
+            //   //     document.getElementById("divndates").style.display="none";
+            //   //     // document.getElementById("ndates").style.display="none";
+            //   // }
+            //
+            //   if(option=="range"){
+            //       document.getElementById("ranges").style.display="block";
+            //       document.getElementById("button").style.display="none";
+            //       document.getElementById("divndates").style.display="none";
+            //       document.getElementById("div").style.display="none";
+            //       // document.getElementById("ndates").style.display="none";
+            //   }
+            // }
+            function print1(){
+              var x=document.getElementById('total_dates').value;
+              var y=document.getElementById('total_ranges').value;
+              var z=document.getElementsByClassName('dateclass').length;
+              console.log(x+"   "+y);
+              console.log("total: "+ z);
+            }
+
+
+        </script>
+
+
+</body>
+</html>

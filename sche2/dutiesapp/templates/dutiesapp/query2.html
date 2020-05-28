@@ -1,0 +1,30 @@
+{% load static %}
+<html>
+<head>
+  <title>Faculty Duties</title>
+  <link rel="stylesheet" href="{% static 'css/input.css' %}">
+</head>
+
+<body>
+  <div class="form1">
+
+<b style="color:green;">Initials :</b>&nbsp;&nbsp;<b>{{name}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style="color:green;">Department :</b>&nbsp;&nbsp;<b>{{dept}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style="color:green;">Designation :</b>&nbsp;&nbsp;<b>{{designation}}</b><br>
+<br><hr><br>
+{% for i,j in dict.items %}
+ {% if j|length > 0 %}
+<b style="color:green;">{{i}} on :</b> <br><br>
+{% for k in j %}
+
+<b>{{k}}</b><br><br>
+{% endfor %}
+<hr>
+{% endif %}
+<br>
+{% endfor %}
+
+
+
+{{count}}
+</div>
+</body>
+</html>

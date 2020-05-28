@@ -1,0 +1,42 @@
+<html>
+<title>Scheduler</title>
+<style>
+
+  body{
+    background: rgb(68,14,133);
+background: linear-gradient(90deg, rgba(68,14,133,1) 0%, rgba(49,61,128,1) 0%, rgba(107,27,96,1) 100%);
+  }
+  .schedule{
+    width: 40%;
+    background-color: #dfc3f5;
+    font-size: 25px;
+    height: 15%;
+    border-radius: 20px;
+    box-shadow: 1px 4px 13px 5px #000000;
+
+
+
+  }
+
+  .schedule:hover{
+    background-color: #c2b1a9;
+    border-radius: 25px;
+    box-shadow: 1px 4px 31px 5px #000000;
+  }
+  div{
+    position: relative;
+ left: 30%;
+ padding-top: 17%;
+ /* transform: translate(-50%, -50%); */
+  align:center;
+
+  }
+</style>
+<body>
+  <form action="sche/" method="POST">
+    {% csrf_token %}
+    <div>
+  <input type="submit" name="getschedule" class="schedule" value="Get Schedule" >
+</div>
+  </form>
+  </body>

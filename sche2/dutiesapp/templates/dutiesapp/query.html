@@ -1,0 +1,62 @@
+{% load static %}
+<html>
+  <head><link rel="stylesheet" href="{% static 'css/input.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+
+    <script>
+
+        $(document).ready(function(){
+            $('.topbar').hide();
+            $('.logo').hide();
+            $('.form').hide();
+
+           setTimeout(function(){
+               $('.topbar').slideDown(800);
+               $('.logo').slideDown(800);
+           },500);
+            setTimeout(function(){
+                $('.form').fadeIn(500);
+
+            },700);
+        });
+    </script>
+  </head>
+<body>
+    <div class="topbar"><img  class="logo" src='{% static "images/collegelogo.png" %}' width="205px" height="70px" ><span>Query Page</span></div>
+  <div class="form">
+<form action="que/" method="POST">
+  {% csrf_token %}
+  <b>Name :</b><br><br><input type="text" name="name" >
+  <br>
+  <br>
+  <b>Department :</b><br><br><input type="text" list="dept" name="department" >
+  <datalist id="dept">
+  <option value="CSE">CSE</option>
+    <option value="CV">CV</option>
+      <option value="EEE">EEE</option>
+        <option value="ECE">ECE</option>
+          <option value="IEM">IEM</option>
+            <option value="CE">CE</option>
+            <option value="MECH">MECH</option>
+            <option value="EIE">EIE</option>
+            <option value="ARCH">ARCH</option>
+              <option value="ISE">ISE</option>
+              <option value="TCE">TCE</option>
+                <option value="ML">ML</option>
+                <option value="BT">BT</option>
+                <option value="PHY">PHY</option>
+                <option value="CHEM">CHEM</option>
+                <option value="MATHS">MATHS</option>
+                <option value="HUM">HUMANITIES</option>
+                <option value="MBA">MBA</option>
+                <option value="MCA">MCA</option>
+              </datalist>
+  <br>
+  <br>
+  <input type="submit" name="query" value="Query">
+
+  </form>
+</div>
+</body>
+</html>

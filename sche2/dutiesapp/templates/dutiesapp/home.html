@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home pAGE</title>
+</head>
+<body>
+Home pageeeee
+
+<form action="validate/" method="post">
+{% csrf_token %}
+
+<input type="submit" value="Insert" name="insert"><br>
+<input type="submit" value="Delete" name="delete"><br>
+<input type="submit" value="Display" name="display"><br>
+<input type="submit" value="Calculate" name="calculate"><br>
+</form>
+
+
+</body>
+</html> -->
+{% load static %}
+<html>
+    <title>Start Page</title>
+    <body>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+
+
+
+
+
+
+
+
+        <link href="https://fonts.googleapis.com/css?family=Markazi+Text" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Voces" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Thasadith" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Lato:100italic' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href='{% static "css/1.css" %}'>
+        
+
+
+        <script type="text/javascript">
+            // document.getElementById('insert').onmouseovers=function(){funt()};
+            function funt(){
+                document.getElementById('insert').style.backgroundColor="blue";
+            }
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+
+
+        <script>
+           $(document).ready(function(){
+              $('.blackopacity').attr("tabindex",-1).focus().css({'overflowY':'hidden'});
+              $('.topbar').hide();
+               // $('.logo1').hide();
+               // $('.rightheading').hide();
+               // $('.background').hide();
+               // $('.c').hide();
+               // $('.classy').hide();
+               $(window).on('load', function(){
+                 $('.topbar').hide();
+                 $('.blackopacity').attr("tabindex",-1).focus().css({'overflowY':'hidden'});
+               });
+
+               setTimeout(function(){
+                   $('.backimage').animate({width:'100%',height:'105%'},700);
+                   $('.b').animate({left: '33.5%',width: '33%','font-size': '3em',color:'white','border-color':'white'},700);
+                   $('.b').css({'animation':'color 0.7s forwards'});
+
+
+               },600);
+
+                setTimeout(function(){
+                   $('.backimage').css({'animation': 'zoomoutimage 0.5s  ease-in-out'});
+               },1500);
+
+
+
+
+               $('.blackopacity').attr("tabindex",-1).focus().css({'overflowY':'hidden'});
+               $('.blackopacity').focus(function(){
+                  $(document.body).css({'overflowY':'hidden'});
+               });
+               $( ".blackopacity" ).keypress(function() {
+                 $('.logo1').hide();
+                 $('.classy').fadeOut(500);
+
+
+                   $('.b').css({'animation': 'tubelight 0.7s infinite'});
+                   $('.b').text("Let's get started");
+                   $('.arrow').remove();
+
+
+                   setTimeout(function(){
+                       $('.b').fadeOut(100);
+                   },700);
+
+                   setTimeout(function(){
+
+                   var pos=$('.c').position();
+                   $(document.body).css({'overflowY':'auto'});
+                 $(document.body).animate({scrollTop: pos.top}, 500);
+
+                       $('.topbar').slideDown(1000);
+
+
+                   },1000);
+                   setTimeout(function(){
+                    $('.logo').fadeIn(1000);
+                    $('.rightheading').fadeIn(1000);
+                    $('.background').slideDown(200);
+                    $('.c').fadeIn(1000);
+                   },2000);
+
+            setTimeout(function(){
+
+
+                           $('.b').remove();
+
+
+                           $('.firstimage').remove();
+                           $('.blackopacity').remove();
+
+
+
+                            var pos=$('.c').position();
+                            // $(document.body).animate({scrollTop: pos.top});
+                            $(document.body).finish();
+
+
+
+                        },1500) ;
+
+
+                   setTimeout(function(){
+                       $('.topnav').fadeIn(300);
+
+                   },1500);
+
+                 });
+
+               /*$('#insert').on('click',function(){
+                  window.open('input.html', '_blank');
+               });*/
+
+              /* $('#delete').on('click',function(){
+                   window.open('delete.html','_blank');
+               });*/
+
+
+
+
+
+
+
+
+
+
+                });
+    </script>
+
+
+
+
+
+        <!-- <div class="topnav">
+              <a class="active" href="#home">Home</a>
+              <a href="#news">Second</a>
+              <a href="#contact">Third</a>
+              <a href="#about">Fourth</a>
+              <a href="sdffs" onClick='return false;'>Invigilation Scheduling</a>
+        </div> -->
+        <img  id="log" class="logo1" src='{% static "images/collegelogo.png" %}' width="205px" height="70px">
+        <div class="topbar"><img  id="log" class="logo" src='{% static "images/collegelogo.png" %}' width="205px" height="70px"><span class="rightheading">Invigilation  Scheduling</span></div>
+            <div class="firstimage" tabindex="-1"><img class="backimage" src='{% static "images/exam.jpg" %}' width="120%" height="120%"></div>
+            <div class="blackopacity"></div>
+
+
+
+
+
+
+
+
+
+        <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+
+
+        </div>
+
+    <div class="classy" style="z-index:2;position:fixed;top:70%;left:46.5%;color:color:#bfbec0;font-size:20px;">Press Any Key</div>
+
+
+
+
+
+
+
+
+
+        <div class="b">
+            <span>Invigilation Scheduling</span>
+        </div>
+<form action="validate/" method="POST">
+  {% csrf_token %}
+    <div class="background"></div>
+    <div class="c">
+
+
+        <!--<div id="insdetail" class="cinner"><div class="slide">Insert the Details of the Teacher</div></div>-->
+        <input type="submit" class="insert" name="insert" value="Insert">
+
+
+        <input type="submit" class="delete" name="delete" value="Delete">
+
+
+        <input type="submit" class="display" name="display"  value="Display">
+
+
+        <input type="submit" class="calculate"  name="calculate" value="Calculate">
+
+        <input type="submit" class="schedule"  name="schedule" value="Schedule">
+
+        <input type="submit" class="dates"  name="dates" value="Dates">
+
+        <input type="submit" class="query"  name="query" value="Query">
+
+        <input type="submit" class="update"  name="update" value="Update">
+
+
+
+
+    </div>
+    <div class="ano"></div>
+
+    </form>
+
+
+    </body>
+</html>

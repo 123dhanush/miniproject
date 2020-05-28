@@ -1,0 +1,628 @@
+{% load customfilters %}
+<html>
+    <head>
+        <title>Schedule page</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400" rel="stylesheet">
+   
+        <style>
+          body{
+              background-image: linear-gradient(-90deg,#39abba,#5a1dbc);
+
+              background-size: cover;
+              height: auto;
+              width: auto;
+
+          }
+          td,th{
+              border:1px solid #cecccc;
+              border-collapse: collapse;
+              padding: 5px;
+
+
+
+          }
+          td{
+            font-weight: bold;
+          }
+          th{
+            cursor:pointer;
+          }
+          th:hover{
+            background-color:#a3cfd4;
+          }
+
+          table{
+              border-spacing: 1;
+              border-collapse: collapse;
+                background: white;
+
+              overflow: hidden;
+                width: auto;
+                margin: 0 auto;
+                position: relative;
+          }
+
+          .maintable{
+
+              display: flex;
+              margin-left: 26.1%;
+
+          }
+
+          .line{
+            width: auto;
+            height: 6px;
+            background-color: black;
+          }
+
+
+
+
+          tr:nth-child(1) > th:nth-child(1){
+              font-size: 15px;
+              font-family: "abcd";
+              padding: 10px;
+              background-color: burlywood;
+          }
+
+          td{
+              text-align: center;
+          }
+
+          tr:nth-child(1){
+          }
+
+          tr:nth-child(2n+5){
+              background-color: #e3e3e3;
+          }
+
+          @font-face{
+              font-family: "abcd";
+              src:url('/fonts/SourceSansPro-BlackItalic.ttf') format("truetype") ;
+          }
+      </style>
+   
+   
+      </head>
+
+
+
+    <body id="body">
+        
+      <button id="hide_button" onclick="show_hide(3,false)">Hide</button>
+
+        <table id="myTable" class="supTable">
+
+
+
+            <tr>
+                <th rowspan="2" colspan="4" style="font-size:21px;font-family: 'Montserrat', sans-serif;" id="tableTitle">Invigilation <br>Schedule</th>
+                <th colspan="32">JANUARY</th>
+                <th colspan="3">FEBRUARY</th>
+
+            </tr>
+            <tr>
+              {% for i,j in datedict.items %}
+              {% ifequal j 2 %}
+                   <th colspan="2">{{i}}</th>
+                 {% else %}
+                   <th colspan="1">{{i}}</th>
+                 {% endifequal %}
+
+
+              {% endfor %}
+
+            </tr>
+
+            <tr id="headers">
+                <th>Initials</th>
+                <th>Designation</th>
+                <th id="depp">Department</th c>
+                <th onclick="sortTable2()" id="idid">ID</th>
+                {% for i,j in datedict.items %}
+                  {% ifequal j 2 %}
+                     <th>AM</th>
+                     <th>PM</th>
+                     {% else %}
+                     <th>AM</th>
+                     {% endifequal %}
+                {% endfor %}
+
+            </tr>
+
+            <div id='input'>
+              {% for i,j in b.items %}
+
+                <tr>
+                  <td>{{j.0}}</td>
+                  <td>{{j.2}}</td>
+                  <td>{{j.1}}</td>
+                  <td>{{j.10}}</td>
+
+                  {% for l,m in l1.items %}
+                        {% if i in m %}
+                          <td>&#x2714;</td>
+
+                        {% else %}
+
+                          <td>-</td>
+
+                        {% endif %}
+
+                  {% endfor %}
+
+                </tr>
+              {% endfor %}
+
+
+
+
+
+              {% for i,j in c.items %}
+
+                <tr>
+                  <td>{{j.0}}</td>
+                  <td>{{j.2}}</td>
+                  <td>{{j.1}}</td>
+                  <td>{{j.10}}</td>
+
+                  {% for l,m in g.items %}
+                        {% if i in m %}
+                          <td>&#x2714;</td>
+
+                        {% else %}
+
+                          <td>-</td>
+
+                        {% endif %}
+
+                  {% endfor %}
+
+                </tr>
+              {% endfor %}
+
+
+
+
+
+
+                {% for i,j in a.items %}
+                {% if 2|trueflag %}
+                {% endif %}
+                  <tr>
+                    <td>{{j.0}}</td>
+                    <td>{{j.2}}</td>
+                    <td>{{j.1}}</td>
+                    <td>{{j.10}}</td>
+                    {% with flag=0 %}
+                    {% for l,m in f.items %}
+                          {% if i in m %}
+                            <td>&#x2714;</td>
+
+                          {% else %}
+                                {% for x,y in e.items %}
+
+                                  {% ifequal l x %}
+                                    {% if i in y %}
+                                        {% if 1|trueflag %}
+                                        <td>R</td>
+                                        {% endif %}
+                                    {% endif %}
+                                  {% endifequal %}
+                                {% endfor %}
+                            {% ifequal 3|trueflag 0 %}
+                            <td>-</td>
+                            {% endifequal %}
+                            {% if 2|trueflag %}
+                            {% endif %}
+                          {% endif %}
+
+                    {% endfor %}
+                    {% endwith %}
+                  </tr>
+                {% endfor %}
+
+
+            </div>
+        </table>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+    function sortTable() {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("myTable");
+    switching = true;
+    /*Make a loop that will continue until
+    no switching has been done:*/
+    while (switching) {
+      //start by saying: no switching is done:
+      switching = false;
+      rows = table.rows;
+      /*Loop through all table rows (except the
+      first, which contains table headers):*/
+      for (i = 3; i < (rows.length - 1); i++) {
+        //start by saying there should be no switching:
+        shouldSwitch = false;
+        /*Get the two elements you want to compare,
+        one from current row and one from the next:*/
+        x = rows[i].getElementsByTagName("TD")[3];
+        y = rows[i + 1].getElementsByTagName("TD")[3];
+        //check if the two rows should switch place:
+        // var temp=[x,y]
+        // var posttemp=[...temp];
+        // temp.sort();
+        
+
+        if (Number(x.innerHTML) > Number( y.innerHTML)) {
+         // if(temp!=posttemp){
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+      if (shouldSwitch) {
+        /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function sortTable2(){
+  var dept={
+    "CV":1,
+    "MECH":2,
+    "EEE":3,
+    "ECE":4,
+    "CSE":5,
+    "IEM":6,
+    "CE":7,
+    "EIE":8,
+    "ARCH":9,
+    "ISE":10,
+    "TCE":11,
+    "ML":12,
+    "BT":13,
+    "PHY":14,
+    "CHEM":15,
+    "MATHS":16,
+    "HUM":17,
+    "MCA":18,
+    "MBA":19
+  }
+  var table, i, x, y; 
+                table = document.getElementById("myTable"); 
+                var switching = true; 
+  
+                
+                while (switching) { 
+                    switching = false; 
+                    var rows = table.rows; 
+                    
+  
+                    
+                    for (i = 3; i < (rows.length - 1); i++) { 
+                        var Switch = false; 
+  
+                        
+                        x = rows[i].getElementsByTagName("TD")[2]; 
+                    
+                        y = rows[i + 1].getElementsByTagName("TD")[2]; 
+  
+                        
+                        if (dept[x.innerHTML] > dept[y.innerHTML]) 
+                            { 
+  
+                            
+                            Switch = true; 
+                            break; 
+                        } 
+                    } 
+                    if (Switch) { 
+                        
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); 
+                        switching = true; 
+                    } 
+                } 
+                var first={}
+                
+                for(i=3;i<(rows.length); i++) { 
+                    var continent=rows[i].getElementsByTagName("TD")[2].innerHTML
+                    if(!(continent in first)){
+                    first[continent] =1;
+                    }
+                    else
+                    first[continent] +=1;
+                    
+                }
+                console.log("Helloooooooooooooooooo");
+                console.log(first);
+                // console.log("Dict : ",first)
+                var s1=3;
+
+                //---------------------------------------------------------------------------------Fun for SubROw sorting
+                for(i in dept){
+                  console.log("Dept : ",i)
+                    var end1=s1+first[i];
+                    console.log("Start:"+s1+" End:"+end1);
+                    var switching1 = true; 
+  
+               
+                while (switching1) { 
+                    switching1 = false; 
+                    
+                    for (j = s1; j<end1-1;j++) { 
+                        var Switch1 = false; 
+  
+                    
+                        x = rows[j].getElementsByTagName("TD")[3]; 
+                        y = rows[j + 1].getElementsByTagName("TD")[3]; 
+                        console.log("s:"+s1+" x:"+x+" y:"+y);
+  
+                         
+                        if (Number(x.innerHTML) > Number(y.innerHTML)) 
+                            { 
+
+                            Switch1 = true; 
+                            break; 
+                        } 
+                    } 
+                    if (Switch1) { 
+                        
+                        rows[j].parentNode.insertBefore(rows[j + 1], rows[j]); 
+                        switching1 = true; 
+                    } 
+                } 
+
+                    s1=end1;
+                }
+              // show_hide(3, false);
+}
+
+
+function show_hide(col_no, doshow) {
+    
+    var tbl = document.getElementById('myTable');
+    var rows = tbl.getElementsByTagName('tr');
+
+    for (var row = 1; row < rows.length; row++) {
+        var cols = rows[row].children;
+        if (col_no >= 0 && col_no < cols.length) {
+            var cell = cols[col_no];
+            if (cell.tagName == 'TD') cell.style.display = 'none';
+        }
+        document.getElementById("tableTitle").colSpan="3";
+        // var headers=document.getElementById("headers");
+        // document.getElementById("idid").style.display="none";
+        
+        
+    }
+    var headers=document.getElementById("headers");
+    headers.deleteCell(3);
+    // document.getElementById("idid").style.display="none";
+
+    document.getElementById("hide_button").style.display="none";
+    
+  
+}
+// console.log(document.getElementById("depp").innerHTML);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var count=1;
+var code="";
+  for(var i=1;i<={{nsessions}};i++ )
+  {   
+    
+      code+="<p style='page-break-before: always'><div id='div"+i+"'> <table class='a' id='a"+i+"'> <tr> <td>Date</td> <td>:</td> <td><b>14.01.2019</b></td> </tr> <tr> <td>Day</td> <td>:</td> <td><b>Monday</b></td> </tr> <tr> <td>Time</td> <td>:</td> <td><b>9.30 am to 12.30 pm</b></td> </tr> </table><br><br> <div id='maintable' class='maintable' > <div> <table width='200' height='200'class='b' id='b"+i+"' style='float:left;''> <tr> <th>DEPT</th> <th colspan='2'>ACS</th> </tr> <tr> <td>CV</td> </tr> <tr> <td>MECH</td> </tr> <tr> <td>EEE</td> </tr> <tr> <td>ECE</td> </tr> <tr> <td>CSE</td> </tr> <tr> <td>CHEM</td> </tr> <tr> <td>IEM</td> </tr> <tr> <td>ISE</td> </tr> <tr> <td>ML</td> </tr> <tr> <td>ARCH</td> </tr> <tr> <td>MCA</td> </tr> <tr> <td>MBA</td> </tr> <tr> <td>BT</td> </tr> <tr> <td>TC</td> </tr> <tr> <td>PHY</td> </tr> <tr> <td>CHY</td> </tr> <tr> <td>MAT</td> </tr> <tr> <td>HUM</td> </tr><tr><td>EIE</td></tr> </table> </div> <div> <table width='200' height='200' id='c"+i+"' style='float:left;'> <tr> <th colspan='2'>DS</th> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr>"+
+      " <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td></tr><tr><td>-</td> </tr> </table> </div> <div> <table  width='200' height='200'id='d"+i+"' style='float:left;'> <tr> <th colspan='15'>RS</th> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> <"+
+      "/tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td></tr><tr><td>-</td> </tr> </table> </div> <div> <table width='200' height='200' id='e"+i+"' style='float:left;'> <tr> <th colspan='3'>RELIEF</th> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr>"+
+      " <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td> </tr> <tr> <td>-</td></tr><tr><td>-</td> </tr> </table> </div> </div> <br><br><tr> </div><br><br><br>";
+     
+
+    }
+
+    document.getElementById('body').innerHTML+=code;
+    function fun(teachdict1,teachdict2,teachdict3,reldict,invidict,dsdict,acsdict)
+    {
+          var deptdict={
+            "CV":1,"MECH":2,"EEE":3,"ECE":4,"CSE":5,"CE":6,"IEM":7,"ISE":8,"ML":9,"ARCH":10,"MCA":11,"MBA":12,"BT":13,"TCE":14,"PHY":15,"CHEM":16,
+            "MATHS":17,
+            "HUM":18,"EIE":19
+
+          };
+
+
+          var count=1;
+
+          for (i in invidict)
+          {
+
+             for( k in invidict[i])
+             {
+
+
+               if (invidict[i][k] in teachdict1)
+               {
+
+                 // var row=document.getElementById('d'+count).rows[deptdict[k[1]]].insertCell(0);
+                 //console.log(deptdict[teachdict1[k][1]]+"       "+teachdict1[k][0])
+                var row=document.getElementById('d'+count).rows[deptdict[teachdict1[invidict[i][k]][1]]].insertCell(0);
+                 row.innerHTML=teachdict1[invidict[i][k]][0];
+               }
+             }
+
+             var arr = new Array("Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" );
+             var d = new Date(i.slice(0,-2));
+
+            //  console.log(i.slice(0,-2));
+            //  console.log(d);
+            //  console.log(d.getDay());
+             document.getElementById('a'+count).rows[1].cells[2].innerHTML=arr[d.getDay()];
+
+              document.getElementById('a'+count).rows[0].cells[2].innerHTML=i.slice(8,10)+'-'+i.slice(5,7)+'-'+i.slice(0,4);
+             if (i.slice(-2,)=='am') {
+               document.getElementById('a'+count).rows[2].cells[2].innerHTML="09:30AM to 12:30PM"
+             }
+
+             else{
+               document.getElementById('a'+count).rows[2].cells[2].innerHTML="02:00PM to 05:00PM"
+             }
+
+
+
+
+             count++;
+          }
+
+//For DS -----------------------------------------------------------------------------------------------------------------------------------------------------
+
+          var count=1;
+
+          for (i in dsdict)
+          {
+
+             for( k in dsdict[i])
+             {
+
+
+               if (dsdict[i][k] in teachdict3)
+               {
+
+                 // var row=document.getElementById('d'+count).rows[deptdict[k[1]]].insertCell(0);
+                 //console.log(deptdict[teachdict1[k][1]]+"       "+teachdict1[k][0])
+                var row=document.getElementById('c'+count).rows[deptdict[teachdict3[dsdict[i][k]][1]]].insertCell(0);
+                 row.innerHTML=teachdict3[dsdict[i][k]][0];
+               }
+             }
+
+
+
+             count++;
+          }
+//------------------------------------------------------------------------------------------------------------------for relief
+var count=1;
+
+for (i in reldict)
+{
+
+   for( k in reldict[i])
+   {
+
+
+     if (reldict[i][k] in teachdict1)
+     {
+
+       // var row=document.getElementById('d'+count).rows[deptdict[k[1]]].insertCell(0);
+       //console.log(deptdict[teachdict1[k][1]]+"       "+teachdict1[k][0])
+      var row=document.getElementById('e'+count).rows[deptdict[teachdict1[reldict[i][k]][1]]].insertCell(0);
+       row.innerHTML=teachdict1[reldict[i][k]][0];
+     }
+   }
+
+
+   count++;
+}
+//--0----------------------------------------------------------------------------------------------------------------------for ACS
+
+var count=1;
+
+for (i in acsdict)
+{
+
+   for( k in acsdict[i])
+   {
+
+
+     if (acsdict[i][k] in teachdict2)
+     {
+
+       // var row=document.getElementById('d'+count).rows[deptdict[k[1]]].insertCell(0);
+       //console.log(deptdict[teachdict1[k][1]]+"       "+teachdict1[k][0])
+      var row=document.getElementById('b'+count).rows[deptdict[teachdict2[acsdict[i][k]][1]]].insertCell(1);
+       row.innerHTML=teachdict2[acsdict[i][k]][0];
+     }
+   }
+
+
+   count++;
+}
+
+
+        }
+        fun({{a|safe}},{{b|safe}},{{c|safe}},{{e|safe}},{{f|safe}},{{g|safe}},{{l1|safe}});
+
+
+
+
+
+
+
+
+        // function deleteextra(){
+        //   for(var i=1;i<={{nsessions}};i++){
+            
+        //   }
+
+        // }
+
+
+
+
+
+      </script>
+
+
+    </body>
+</html>
+

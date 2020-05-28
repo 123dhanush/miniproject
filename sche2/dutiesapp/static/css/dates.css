@@ -1,0 +1,15 @@
+#b1:hover, #b2:hover{
+  background-color: black;
+}
+
+
+#total_dates,#total_ranges, #total{
+  display: none;
+}
+
+#total_dates1,#total_ranges1, #total1{
+  display: none;
+}
+#mySelect,#mySelect2{
+  width: auto;
+}

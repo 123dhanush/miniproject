@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update page</title>
+    <link rel="stylesheet" href='{% static "css/input.css" %}'>
+</head>
+<body>
+
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400" rel="stylesheet">
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+
+        <script>
+
+            $(document).ready(function(){
+                $('.topbar').hide();
+                $('.logo').hide();
+                $('.form').hide();
+
+               setTimeout(function(){
+                   $('.topbar').slideDown(800);
+                   $('.logo').slideDown(800);
+               },500);
+                setTimeout(function(){
+                    $('.form').fadeIn(500);
+
+                },700);
+            });
+        </script>
+
+
+
+
+        <div class="topbar"><img  class="logo" src='{% static "images/collegelogo.png" %}' width="205px" height="70px" ><span>Update Page</span></div>
+
+        <form action="update/" method="post">
+            {% csrf_token %}
+            <div class="form">
+
+
+
+                <label for="initials"><b>Teacher's name :</b></label><br><br> <input type="text" id="initials" name="initials"><br><br><br>
+
+
+                                <b>Department :</b><br><br><input type="text" list="dept" name="department" >
+                                <datalist id="dept">
+                                <option value="CSE">CSE</option>
+                                  <option value="CV">CV</option>
+                                    <option value="EEE">EEE</option>
+                                      <option value="ECE">ECE</option>
+                                        <option value="IEM">IEM</option>
+                                          <option value="CE">CE</option>
+                                          <option value="MECH">MECH</option>
+                                          <option value="EIE">EIE</option>
+                                          <option value="ARCH">ARCH</option>
+                                            <option value="ISE">ISE</option>
+                                            <option value="TCE">TCE</option>
+                                              <option value="ML">ML</option>
+                                              <option value="BT">BT</option>
+                                              <option value="PHY">PHY</option>
+                                              <option value="CHEM">CHEM</option>
+                                              <option value="MATHS">MATHS</option>
+                                              <option value="HUM">HUMANITIES</option>
+                                              <option value="MBA">MBA</option>
+                                              <option value="MCA">MCA</option>
+                                            </datalist>
+                                <br><br>
+
+                <b>Select the field to be updated :</b><br><br>
+                <select id="select" name="fieldname">
+                    <option>Select</option>
+                    <option value="initials">Initials</option>
+                    <option value="designation">Designation</option>
+                    <option value="department">Department</option>
+
+
+                </select><br><br>
+
+                <button id="button" onclick="disp()">Next</button><br><br><br>
+
+                <div id="div"></div>
+
+
+                <input type="submit" name="update" value="Update"><br><br><br>
+                <datalist id="new_des">
+                    <option value="H.O.D">H.O.D</option>
+                    <option value="Professor">Professor</option>
+                    <option value="Associate">Associate</option>
+                    <option value="Associate(prob)">Associate(prob)</option>
+                    <option value="Assistant">Assistant</option>
+                    <option value="Professor(prob)">Professor(prob)</option>
+                    <option value="Probitionary">Probitionary</option>
+                </datalist>
+
+
+            </div>
+
+        </form>
+
+        <script type="text/javascript">
+            document.getElementById("button").addEventListener("click", function(event){
+            event.preventDefault()
+            });
+            var code='';
+            function disp(){
+                console.log("ok")
+                if(document.getElementById('select').value=="initials")
+                    code="<b>New Initials :</b><br><input type='text' name='newinitials'><br><br><br>";
+
+                    if(document.getElementById('select').value=="designation")
+                    {
+                    code="<b>New Designation :</b><br><input type='text' list='new_des' name='newdesignation'><br><br><br>"
+                    }
+                    if(document.getElementById('select').value=="department")
+                    code="<b>New Department :</b><br><input type='text' name='newdepartment'><br><br><br>";
+                    document.getElementById('div').innerHTML=code;
+
+            }
+
+        </script>
+
+
+
+</body>
+</html>

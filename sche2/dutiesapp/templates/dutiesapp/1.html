@@ -1,0 +1,153 @@
+
+{% load static %}
+<html>
+    <title>Junk</title>
+    <body>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+         // <script src="{% static 'js/jquery_min.js' %}">
+        </script>
+
+
+
+
+
+
+        </script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Thasadith" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Lato:100italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/1.css' %}">
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+
+
+        <script>
+           $(document).ready(function(){
+               $('.firstimage').attr("tabindex",-1).focus().css({'overflowY':'hidden'});
+               $('.firstimage').focus(function(){
+                  $(document.body).css({'overflowY':'hidden'});
+               });
+               $( ".firstimage" ).keypress(function() {
+
+                   $('.b').css({'animation': 'tubelight 0.7s infinite'});
+                   $('span').text("Let's get started");
+                   $('.arrow').remove();
+
+                   setTimeout(function(){
+                       $('.b').fadeOut(100);
+                   },700);
+
+                   setTimeout(function(){
+
+                   var pos=$('.c').position();
+                   $(document.body).css({'overflowY':'auto'});
+                 $(document.body).animate({scrollTop: pos.top}, 500);
+
+                   },1000);
+
+            setTimeout(function(){
+
+
+                           $('.b').remove();
+
+
+                           $('.firstimage').remove();
+                           $('.blackopacity').remove();
+
+
+
+                            var pos=$('.c').position();
+                            $(document.body).animate({scrollTop: pos.top});
+                            $(document.body).finish();
+                            $('.blackopacity2').css({'display':'block'});
+
+
+                        },1500) ;
+
+
+                   setTimeout(function(){
+                       $('.topnav').fadeIn(300);
+
+                   },1500);
+
+                 });
+
+               $('.insert').on('click',function(){
+                  window.open('input.html', '_blank');
+               });
+
+                });
+    </script>
+
+    <img  class="logo" src="{% static 'images/collegelogo.png' %}" width="205px" height="70px">
+
+
+
+        <div class="topnav">
+              <a class="active" href="#home">Home</a>
+              <a href="#news">Second</a>
+              <a href="#contact">Third</a>
+              <a href="#about">Fourth</a>
+              <a href="sdffs" onClick='return false;'>Invigilation Scheduling</a>
+        </div>
+
+        <div class="topbar">Examination scheduling</div>
+            <!--<div class="firstimage" tabindex="-1"><img src="{% static 'images/exam.jpg' %}" width="100%" height="105%"></div>-->
+            <div class="blackopacity"></div>
+            <div class="blackopacity2"></div>
+
+
+
+
+
+
+
+
+        <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+
+
+        </div>
+
+    <div class="classa">Press any key ...</div>
+
+
+
+
+
+
+
+
+
+        <div class="b">
+            <span>Invigilation Scheduling</span>
+
+
+        </div>
+
+    <div class="c" tabindex="-2">
+
+        <div class="insert">Insert</div>
+
+        <div class="display">Display</div>
+
+        <div class="delete">Delete</div>
+
+        <div class="something">Something</div>
+    </div>
+         <div class="d"></div>
+
+    </body>
+</html>

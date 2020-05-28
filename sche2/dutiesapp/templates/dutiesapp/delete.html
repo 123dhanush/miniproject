@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deleting page</title>
+    <link rel="stylesheet" href='{% static "css/input.css" %}'>
+</head>
+<body>
+
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400" rel="stylesheet">
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+
+        <script>
+
+            $(document).ready(function(){
+                $('.topbar').hide();
+                $('.logo').hide();
+                $('.form').hide();
+
+               setTimeout(function(){
+                   $('.topbar').slideDown(800);
+                   $('.logo').slideDown(800);
+               },500);
+                setTimeout(function(){
+                    $('.form').fadeIn(500);
+
+                },700);
+            });
+        </script>
+
+
+
+
+        <div class="topbar"><img  class="logo" src='{% static "images/collegelogo.png" %}' width="205px" height="70px" ><span style="z-index: 2;position: fixed;left: 46.5%;top: 4%;font-size: 25px;color:white;justify-content: center;text-align: center;">Delete Page</span></div>
+
+        <form action="dele/" method="post">
+            {% csrf_token %}
+            <div class="form">
+
+
+
+                <label for="initials"><b>Teacher's name :</b></label><br><br> <input type="text" id="initials" name="initials"><br><br>
+                <b>Department :</b><br><br><input type="text" list="dept" name="department" >
+                <datalist id="dept">
+                <option value="CSE">CSE</option>
+                  <option value="CV">CV</option>
+                    <option value="EEE">EEE</option>
+                      <option value="ECE">ECE</option>
+                        <option value="IEM">IEM</option>
+                          <option value="CE">CE</option>
+                          <option value="MECH">MECH</option>
+                          <option value="EIE">EIE</option>
+                          <option value="ARCH">ARCH</option>
+                            <option value="ISE">ISE</option>
+                            <option value="TCE">TCE</option>
+                              <option value="ML">ML</option>
+                              <option value="BT">BT</option>
+                              <option value="PHY">PHY</option>
+                              <option value="CHEM">CHEM</option>
+                              <option value="MATHS">MATHS</option>
+                              <option value="HUM">HUMANITIES</option>
+                              <option value="MBA">MBA</option>
+                              <option value="MCA">MCA</option>
+                            </datalist>
+
+                              <br><br><br>
+                <input type="submit" name="delete" value="Delete"><br><br><br>
+
+
+            </div>
+
+        </form>
+
+
+
+</body>
+</html>
